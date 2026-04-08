@@ -87,11 +87,17 @@ class BookIngestionPipeline:
         self.cohere_api_key = os.getenv("COHERE_API_KEY")
         self.qdrant_url = os.getenv("QDRANT_URL")
         self.qdrant_api_key = os.getenv("QDRANT_API_KEY")
-        self.book_url = os.getenv("BOOK_BASE_URL")  # GitHub Pages URL (spec 006)
+        # Support both BOOK_BASE_URL (spec 006 - GitHub Pages) and VERCEL_BOOK_URL (spec 005)
+        self.book_url = os.getenv("BOOK_BASE_URL") or os.getenv("VERCEL_BOOK_URL")
 
         # Validate required configuration
         if not all([self.cohere_api_key, self.qdrant_url, self.qdrant_api_key, self.book_url]):
-            raise ValueError("Missing required environment variables")
+            missing = []
+            if not self.cohere_api_key: missing.append("COHERE_API_KEY")
+            if not self.qdrant_url: missing.append("QDRANT_URL")
+            if not self.qdrant_api_key: missing.append("QDRANT_API_KEY")
+            if not self.book_url: missing.append("BOOK_BASE_URL or VERCEL_BOOK_URL")
+            raise ValueError(f"Missing required environment variables: {', '.join(missing)}")
 
         # Initialize clients
         self.cohere_client = cohere.Client(self.cohere_api_key)
