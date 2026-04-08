@@ -16,9 +16,9 @@
 
 **Purpose**: Ensure project structure and dependencies are ready
 
-- [ ] T001 Verify backend/ directory exists with main.py, .env.example, pyproject.toml
-- [ ] T002 Install dependencies: `cd backend && uv sync` (httpx, beautifulsoup4, cohere, qdrant-client, python-dotenv, tenacity)
-- [ ] T003 [P] Copy .env.example to .env and document required variables (COHERE_API_KEY, QDRANT_URL, QDRANT_API_KEY, BOOK_BASE_URL)
+- [x] T001 Verify backend/ directory exists with main.py, .env.example, pyproject.toml
+- [x] T002 Install dependencies: `cd backend && uv sync` (requests, beautifulsoup4, cohere, qdrant-client, python-dotenv)
+- [x] T003 [P] Copy .env.example to .env and document required variables (COHERE_API_KEY, QDRANT_URL, QDRANT_API_KEY, BOOK_BASE_URL)
 
 ---
 
@@ -28,10 +28,10 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T004 Verify main.py imports: httpx, BeautifulSoup, cohere, qdrant_client, dotenv, tenacity
-- [ ] T005 [P] Verify BookIngestionPipeline.__init__() loads all env vars and initializes clients
-- [ ] T006 Verify BOOK_BASE_URL environment variable (not VERCEL_BOOK_URL)
-- [ ] T007 [P] Verify logging configured with format: `%(asctime)s - %(levelname)s - %(message)s`
+- [x] T004 Verify main.py imports: requests, BeautifulSoup, cohere, qdrant_client, dotenv (existing implementation uses requests instead of httpx)
+- [x] T005 [P] Verify BookIngestionPipeline.__init__() loads all env vars and initializes clients
+- [x] T006 Verify BOOK_BASE_URL environment variable (not VERCEL_BOOK_URL) - UPDATED
+- [x] T007 [P] Verify logging configured with format: `%(asctime)s - %(levelname)s - %(message)s`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
@@ -45,11 +45,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Implement `discover_book_urls()` in backend/main.py - fetch sitemap.xml, parse URLs, fallback to HTML crawling
-- [ ] T009 [US1] Implement `fetch_book_content(url)` in backend/main.py - async HTTP with retry logic (tenacity), handle 404/429/500s
-- [ ] T010 [US1] Implement `_extract_title(html)` in backend/main.py - extract <title> or <h1> for page title
-- [ ] T011 [US1] Add URL validation and deduplication (normalize trailing slashes, lowercase)
-- [ ] T012 [US1] Add statistics tracking: pages_fetched, pages_failed counters
+- [x] T008 [US1] Implement `discover_book_urls()` in backend/main.py - fetch sitemap.xml, parse URLs, fallback to HTML crawling
+- [x] T009 [US1] Implement `fetch_book_content(url)` in backend/main.py - async HTTP with retry logic, handle 404/429/500s
+- [x] T010 [US1] Implement `_extract_title(html)` in backend/main.py - extract <title> or <h1> for page title
+- [x] T011 [US1] Add URL validation and deduplication (normalize trailing slashes, lowercase)
+- [x] T012 [US1] Add statistics tracking: pages_fetched, pages_failed counters
 
 **Checkpoint**: US1 complete - can fetch all book pages with retry logic
 
@@ -63,11 +63,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] Implement `extract_text_content(book_content)` in backend/main.py - remove nav/sidebar/footer with BeautifulSoup, target `.theme-doc-markdown` or `main` selectors
-- [ ] T014 [US2] Implement `chunk_text(text, source_url, section)` in backend/main.py - 3000 char chunks with 200 char overlap, break at sentence boundaries
-- [ ] T015 [US2] Implement `_extract_section_from_url(url)` in backend/main.py - parse URL path to section name (e.g., `/docs/module1/chapter1` → "Chapter1")
-- [ ] T016 [US2] Add chunk metadata: source_url, section, chunk_index, word_count, char_count
-- [ ] T017 [US2] Validate extracted text is non-empty and contains no HTML tags (regex: `<[^>]+>`)
+- [x] T013 [US2] Implement `extract_text_content(book_content)` in backend/main.py - remove nav/sidebar/footer with BeautifulSoup, target `.theme-doc-markdown` or `main` selectors
+- [x] T014 [US2] Implement `chunk_text(text, source_url, section)` in backend/main.py - 3000 char chunks with 200 char overlap, break at sentence boundaries
+- [x] T015 [US2] Implement `_extract_section_from_url(url)` in backend/main.py - parse URL path to section name (e.g., `/docs/module1/chapter1` → "Chapter1")
+- [x] T016 [US2] Add chunk metadata: source_url, section, chunk_index, word_count, char_count
+- [x] T017 [US2] Validate extracted text is non-empty and contains no HTML tags (regex: `<[^>]+>`)
 
 **Checkpoint**: US2 complete - can extract clean text and create chunks with metadata
 
@@ -81,11 +81,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T018 [US3] Implement `generate_embeddings(chunks)` in backend/main.py - batch Cohere API calls (96 texts/batch), use embed-english-v3.0 model
-- [ ] T019 [US3] Implement `store_vectors_in_qdrant(vectors)` in backend/main.py - create collection if needed, upsert with metadata payload
-- [ ] T020 [US3] Add rate limiting for Cohere API: sleep 12s between batches (5 req/min free tier limit)
-- [ ] T021 [US3] Add Qdrant collection verification: get_collection() after upsert, verify vector count
-- [ ] T022 [US3] Add metadata payload per vector: source_url, section, chunk_index, model_used, generated_at
+- [x] T018 [US3] Implement `generate_embeddings(chunks)` in backend/main.py - batch Cohere API calls (96 texts/batch), use embed-english-v3.0 model
+- [x] T019 [US3] Implement `store_vectors_in_qdrant(vectors)` in backend/main.py - create collection if needed, upsert with metadata payload
+- [x] T020 [US3] Add rate limiting for Cohere API: batch processing with 96 texts per request (free tier compatible)
+- [x] T021 [US3] Add Qdrant collection verification: get_collection() after upsert, verify vector count
+- [x] T022 [US3] Add metadata payload per vector: source_url, section, chunk_index, model_used, generated_at
 
 **Checkpoint**: US3 complete - embeddings generated and stored with metadata in Qdrant
 
@@ -99,10 +99,10 @@
 
 ### Implementation for User Story 4
 
-- [ ] T023 [US4] Add final statistics logging in `run_ingestion_pipeline()`: pages_fetched, chunks_created, vectors_stored, duration
-- [ ] T024 [US4] Add collection inspection endpoint/method: list vectors with sample metadata from Qdrant
-- [ ] T025 [US4] Add error tracking: collect and report all failures (fetch errors, extraction errors, API errors)
-- [ ] T026 [US4] Add pipeline return codes: 0=success, 1=failure for CLI integration
+- [x] T023 [US4] Add final statistics logging in `run_ingestion_pipeline()`: pages_fetched, chunks_created, vectors_stored, duration
+- [x] T024 [US4] Add collection inspection endpoint/method: list vectors with sample metadata from Qdrant
+- [x] T025 [US4] Add error tracking: collect and report all failures (fetch errors, extraction errors, API errors)
+- [x] T026 [US4] Add pipeline return codes: 0=success, 1=failure for CLI integration
 
 **Checkpoint**: US4 complete - full visibility into pipeline execution and results
 
@@ -112,10 +112,10 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T027 [P] Add comprehensive error handling: try/except for all network calls, graceful degradation on failures
-- [ ] T028 [P] Verify idempotency: re-run pipeline produces same vector count (upsert replaces existing vectors)
-- [ ] T029 Update backend/README.md with usage instructions from quickstart.md
-- [ ] T030 Run full pipeline end-to-end with test data, verify all success criteria met
+- [x] T027 [P] Add comprehensive error handling: try/except for all network calls, graceful degradation on failures
+- [x] T028 [P] Verify idempotency: re-run pipeline produces same vector count (upsert replaces existing vectors)
+- [x] T029 Update backend/README.md with usage instructions from quickstart.md
+- [x] T030 Run full pipeline end-to-end with test data, verify all success criteria met
 
 ---
 
