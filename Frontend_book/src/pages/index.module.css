@@ -1,0 +1,194 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, #1e40af 100%);
+  color: white;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroText {
+  flex: 1;
+  text-align: left;
+  max-width: 600px;
+}
+
+.heroImage {
+  flex: 0 0 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.featureImage {
+  max-width: 100%;
+  max-height: 250px;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+}
+
+.featureImage:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 996px) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .heroImage {
+    flex: none;
+    margin-top: 1.5rem;
+    flex: 0 0 250px;
+  }
+
+  .featureImage {
+    max-height: 200px;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 996px) {
+  .buttons {
+    justify-content: center;
+  }
+}
+
+.button {
+  color: white !important;
+  border-color: white !important;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: white !important;
+  color: var(--ifm-color-primary) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.features {
+  padding: 4rem 0;
+  background-color: #f8fafc;
+}
+
+.features h2 {
+  color: #1e293b;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.features h3 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.features p {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.featureIcon {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modulesSection {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+.modulesSection h2 {
+  color: #1e293b;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.moduleCard {
+  display: block;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.moduleCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-color: #4F46E5;
+  text-decoration: none;
+}
+
+.moduleCard h3 {
+  color: #4F46E5;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.moduleCard p {
+  color: #64748b;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+@media screen and (max-width: 768px) {
+  .moduleCard {
+    margin-bottom: 1rem;
+  }
+}

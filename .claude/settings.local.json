@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pwsh -File \".specify/scripts/powershell/update-agent-context.ps1\" -AgentType qwen)",
+      "Bash(mkdir \"Frontend_book\\\\static\\\\img\")"
+    ]
+  }
+}
