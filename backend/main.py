@@ -87,7 +87,7 @@ class BookIngestionPipeline:
         self.cohere_api_key = os.getenv("COHERE_API_KEY")
         self.qdrant_url = os.getenv("QDRANT_URL")
         self.qdrant_api_key = os.getenv("QDRANT_API_KEY")
-        self.book_url = os.getenv("VERCEL_BOOK_URL")
+        self.book_url = os.getenv("BOOK_BASE_URL")  # GitHub Pages URL (spec 006)
 
         # Validate required configuration
         if not all([self.cohere_api_key, self.qdrant_url, self.qdrant_api_key, self.book_url]):
