@@ -25,6 +25,7 @@ const config = {
   trailingSlash: false,
 
 
+  
   onBrokenLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -67,6 +68,27 @@ const config = {
         },
       }),
     ],
+  ],
+
+  plugins: [
+    function devServerProxy() {
+      return {
+        name: 'dev-server-proxy',
+        configureWebpack() {
+          return {
+            devServer: {
+              proxy: [
+                {
+                  context: '/api',
+                  target: 'http://localhost:8000',
+                  changeOrigin: true,
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
 
   themeConfig:
