@@ -113,7 +113,7 @@ const config = {
             label: 'Chapters',
           },
           {
-            href: 'https://github.com/MahaMeher/Hackathon-1-Book',
+            href: 'https://github.com/MahaMeher/Hackathon-1-Book-main',
             position: 'right',
             className: 'navbar-github-link',
             'aria-label': 'GitHub repository',
@@ -159,7 +159,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/MahaMeher/Hackathon-1-Book',
+                href: 'https://github.com/MahaMeher/Hackathon-1-Book-main',
               },
             ],
           },

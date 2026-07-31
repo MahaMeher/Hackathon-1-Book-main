@@ -1,0 +1,13 @@
+__pycache__
+*.pyc
+.venv
+venv
+.env
+.env.*
+*.log
+.pytest_cache
+.coverage
+tests/
+$null
+verify_content.txt
+test_extract.txt

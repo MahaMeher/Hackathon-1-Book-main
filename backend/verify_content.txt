@@ -1,0 +1,20 @@
+Score: 0.0514 | Source: https://hackathon-1-book-chi.vercel.app/docs/module4/chapter1-voice-to-action.html | Section: docs/module4
+Content: Introduction to Voice-to-Action Systems ​ Voice-to-Action systems represent a crucial interface between human users and autonomous robots, enabling natural language communication that allows robots to understand and execute spoken commands. These systems bridge the gap between human communication an
+Has U+FFFD: False | Has U+200B: True
+---
+Score: 0.0315 | Source: https://hackathon-1-book-chi.vercel.app/docs/module4/chapter3-capstone-autonomous-humanoid.html | Section: docs/module4
+Content: Introduction to End-to-End Autonomous Systems ​ The capstone chapter brings together all components of the Vision-Language-Action (VLA) system into a complete autonomous humanoid robot. This chapter demonstrates how voice interfaces, cognitive planning, navigation, perception, and manipulation work 
+Has U+FFFD: False | Has U+200B: True
+---
+Score: 0.0304 | Source: https://hackathon-1-book-chi.vercel.app/docs/module4/chapter2-cognitive-planning.html | Section: docs/module4
+Content: Introduction to Cognitive Planning ​ Cognitive planning in Vision-Language-Action (VLA) systems represents the intelligence layer that bridges natural language understanding and robot execution. This component takes high-level natural language commands and transforms them into structured action plan
+Has U+FFFD: False | Has U+200B: True
+---
+Score: 0.0288 | Source: https://hackathon-1-book-chi.vercel.app/docs/module4/chapter1-voice-to-action.html | Section: docs/module4
+Content: f Whisper that maintain accuracy while reducing computational requirements: Faster inference times suitable for real-time applications Lower memory and power consumption Better compatibility with edge computing platforms Whisper in the VLA Context ​ In Vision-Language-Action systems, Whisper serves 
+Has U+FFFD: False | Has U+200B: True
+---
+Score: 0.0188 | Source: https://hackathon-1-book-chi.vercel.app/docs/module3/chapter2-isaac-ros-perception.html | Section: docs/module3
+Content: Introduction to Isaac ROS ​ Isaac ROS is NVIDIA's collection of hardware-accelerated packages that extend the Robot Operating System (ROS 2) ecosystem with GPU-powered capabilities. These packages leverage NVIDIA's hardware acceleration technologies to significantly improve the performance of percep
+Has U+FFFD: False | Has U+200B: True
+---
